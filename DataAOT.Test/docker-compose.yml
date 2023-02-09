@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: bingo123!
+    networks:
+      - local
+    ports:
+      - "3306:3306"
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: test_db
+      POSTGRES_PASSWORD: bingo123!
+      POSTGRES_USER: postgres
+    networks:
+      - local
+    ports:
+      - "5432:5432"
+  mssqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    networks:
+      - local
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: bingo123!
+    ports:
+      - "1433:1433"
+
+networks:
+  local:
+    driver: bridge

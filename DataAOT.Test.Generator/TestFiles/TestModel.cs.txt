@@ -1,0 +1,75 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using DataAOT;
+// ReSharper disable CheckNamespace
+
+namespace TestNamespace;
+
+// Class to test code generation
+[Table( "test")]
+public class TestModel
+{
+    [Key]
+    [Column("id_field")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int ID { get; set; }
+
+    [Column("computed_field")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    public int Computed { get; set; }
+    
+    [Column("string_field")]
+    public string StringField { get; set; } = default!;
+    
+    [Column("date_time_field")]
+    public DateTimeOffset DateTimeField { get; set; } = default!;
+
+    [Column("date_time_offset_field")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    public DateTimeOffset DateTimeOffsetField { get; set; } = default!;
+    
+    [Column("int_field")]
+    public int IntField { get; set; }
+    
+    [Column("short_field")]
+    public short ShortField { get; set; }
+
+    [Column("long_field")]
+    public long LongField { get; set; }
+
+    [Column("uint_field")]
+    public uint UIntField { get; set; }
+    
+    [Column("ushort_field")]
+    public ushort UShortField { get; set; }
+    
+    [Column("ulong_field")]
+    public ulong ULongField { get; set; }
+
+    [Column("byte_field")]
+    public byte[] ByteArrayField { get; set; } = default!;
+
+    [Column("char_field")]
+    public char[] CharArrayField { get; set; } = default!;
+
+    [Column("sbyte_field")]
+    public sbyte SByteField { get; set; }
+    
+    [Column("float_field")]
+    public float FloatField { get; set; }
+
+    [Column("double_field")]
+    public double DoubleField { get; set; }
+
+    [Column("decimal_field")]
+    public decimal DecimalField { get; set; }
+
+    [Column("boolean_field")]
+    public bool BooleanField { get; set; }
+}
+
+// Class to test code generation
+public partial class TestGateway: DbGateway<TestModel>
+{
+}

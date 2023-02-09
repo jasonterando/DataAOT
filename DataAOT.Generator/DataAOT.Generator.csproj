@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <BuildOutputTargetFolder>analyzers</BuildOutputTargetFolder>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+
+        <Title>Digital Room Data AOT Generator</Title>
+        <Description>This is a data access code generator that is AOT friendly.
+        </Description>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Authors>Jason Terando</Authors>
+        <AssemblyVersion>0.0.1</AssemblyVersion>
+    
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
+        <PackageReference Include="System.Reflection" Version="4.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DataAOT\DataAOT.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="templates\DbGatewayTemplate.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.CodeAnalysis">
+        <HintPath>..\..\..\..\..\..\..\..\home\jterando\.nuget\packages\microsoft.codeanalysis.common\4.4.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+</Project>

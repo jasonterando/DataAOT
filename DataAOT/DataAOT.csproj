@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>10.0</LangVersion>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+        <TargetFrameworks>net7.0;netstandard2.0</TargetFrameworks>
+        <AssemblyVersion>0.0.1-alpha</AssemblyVersion>
+    </PropertyGroup>
+    
+
+    <ItemGroup>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0"/>
+    </ItemGroup>
+
+</Project>

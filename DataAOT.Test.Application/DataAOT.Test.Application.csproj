@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>preview</LangVersion>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <GeneratedFolder>generated</GeneratedFolder>
+        <CompilerGeneratedFilesOutputPath>$(GeneratedFolder)</CompilerGeneratedFilesOutputPath>
+        <TargetFramework>net7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <DebugSymbols>False</DebugSymbols>
+        <DebugType>None</DebugType>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <PublishAot>true</PublishAot>
+        <StripSymbols>true</StripSymbols>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <UseSystemResourceKeys>true</UseSystemResourceKeys>
+        <EventSourceSupport>true</EventSourceSupport>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>full</TrimMode>
+        <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(Configuration)'=='Release'">
+        <!--The runtime directives file allows the compiler to know what types and assemblies to not trim out of the final binary, even if they don't appear to be used.-->
+        <RdXmlFile Include="rd.xml" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\DataAOT.Generator\DataAOT.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+      <ProjectReference Include="..\DataAOT\DataAOT.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Exclude the output of source generators from the compilation -->
+        <!-- 👇 Exclude everything in the base folder -->
+        <!-- see https://andrewlock.net/creating-a-source-generator-part-6-saving-source-generator-output-in-source-control/ -->
+        <Compile Remove="$(GeneratedFolder)/**/*.cs" />        
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.1" />
+    </ItemGroup>
+
+</Project>
